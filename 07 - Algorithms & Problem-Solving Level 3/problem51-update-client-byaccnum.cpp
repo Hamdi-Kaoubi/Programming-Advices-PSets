@@ -157,9 +157,7 @@ bool UpdateClientByAccountNumber(string AccountNumber, vector<stClient>& vcClien
         if (Answer == 'y' or Answer == 'Y')
         {
             SaveClientsDataToFile(ClientsFileName, AccountNumber, vcClients);
-            //Refresh Clients :
-            vcClients = LoadDataFromFile(ClientsFileName);
-            cout << "\n\nClient deleted successfully\n";
+            cout << "\n\nClient updated successfully\n";
             return true;
         }
     }
