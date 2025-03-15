@@ -498,7 +498,7 @@ void CalcWithdraw(vector<stClient>& vcClients)
     double Withdraws = WithdrawAmount();
     for (stClient& C : vcClients)
     {
-        if (Withdraws > C.AccountBalance)
+        if (C.AccountNumber == AccountNumber && Withdraws > C.AccountBalance)
         {
             cout << "\nAmount exceeds the balance, you can withraw up to : " << C.AccountBalance;
             cout << "\nPlease enter another Amount : ";
