@@ -25,15 +25,13 @@ bool CheckLeap(int year)
 stDaysHrsMinsSecs FillYear(int Year)
 {
     stDaysHrsMinsSecs DaysHoursMinutesSeconds;
-    if (CheckLeap(Year))
-    {
-        DaysHoursMinutesSeconds.days = 366;
-    }
-    else
-        DaysHoursMinutesSeconds.days = 365;
+    
+    (CheckLeap(Year)) ? DaysHoursMinutesSeconds.days = 366 : DaysHoursMinutesSeconds.days = 365;
+ 
     DaysHoursMinutesSeconds.hours = DaysHoursMinutesSeconds.days * 24;
     DaysHoursMinutesSeconds.munites = DaysHoursMinutesSeconds.hours * 60;
     DaysHoursMinutesSeconds.seconds = DaysHoursMinutesSeconds.munites * 60;
+    
     return DaysHoursMinutesSeconds;
 }
 
