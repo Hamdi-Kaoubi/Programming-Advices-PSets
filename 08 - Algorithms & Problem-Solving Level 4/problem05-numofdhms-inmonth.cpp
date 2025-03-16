@@ -12,8 +12,11 @@ short ReadYear()
 short ReadMonth()
 {
     short Month;
-        cout << "Enter a month to check : ";
-        cin >> Month;
+        do
+            {
+                cout << "Enter a month to check : ";
+                cin >> Month;
+            } while(Month < 1 and Month > 12);
     return Month;
 }
 
