@@ -32,11 +32,6 @@ short ReadDay()
 
 void checkValidityOfDays(short year, short month, short day)
 {
-   /* while (month < 1 or month > 12)
-    {
-        cout << "Invalid month, please put in a valid month \n";
-        month = ReadMonth();
-    }*/
     while ((CheckLeap(year) and month == 2 and (day < 1 or day > 29)) or (!CheckLeap(year) and month == 2 and (day < 1 or day > 28)))
     {
         cout << "Invalid day, please put in a valid day \n";
