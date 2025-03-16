@@ -3,8 +3,8 @@ using namespace std;
 
 struct stDaysHrsMinsSecs
 {
-    int days;
-    int hours;
+    short days;
+    short hours;
     int munites;
     int seconds;
 };
