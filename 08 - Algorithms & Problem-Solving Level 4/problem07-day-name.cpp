@@ -60,14 +60,8 @@ int DayOrder(short year, short month, short day)
 
 string DayName(int dayOrder)
 {
-    string Day = "";
     string ArrDays[] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-    for (int i = 0; i < 7; i++)
-    {
-        if (i == dayOrder)
-            Day += ArrDays[i];
-    }
-    return Day;
+    return ArrDays[dayOrder];
 }
 
 int main()
