@@ -51,7 +51,7 @@ void PrintMonthCalender(short month, short daysInMonth, short dayOrder, short da
         cout << Days[i];
     }
     cout << "\n\t";
-        for (short i = 0; i < 5; i++)
+        for (short i = 0; i < 6; i++)
         {
             for (short j = 0; j < 7; j++)
             {
