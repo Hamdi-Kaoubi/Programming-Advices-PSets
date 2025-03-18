@@ -64,9 +64,9 @@ bool IsLessThan(sDate Date1, sDate Date2)
     return (Date1.Year < Date2.Year) ? true : ((Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month ? true : (Date1.Month == Date2.Month ? Date1.Day < Date2.Day : false)) : false);
 }
 
-short GetDifference(sDate Date1, sDate Date2)
+int GetDifference(sDate Date1, sDate Date2, bool IncludeEndDay=false)
 {
-    short DaysOfYear = 0, DaysOfYearsBetween = 0, DaysFromDate1 = 0, DaysFromDate2 = 0;
+    int DaysOfYear = 0, DaysOfYearsBetween = 0, DaysFromDate1 = 0, DaysFromDate2 = 0;
     if (IsLessThan(Date1, Date2))
     {
         DaysFromDate1 = DaysFromBeginning(Date1.Year, Date1.Month, Date1.Day);
@@ -85,7 +85,7 @@ short GetDifference(sDate Date1, sDate Date2)
         }
         DaysFromDate2 = DaysFromBeginning(Date2.Year, Date2.Month, Date2.Day) + DaysOfYearsBetween;
     }
-    return DaysFromDate2 - DaysFromDate1;
+    return (IncludeEndDay) ? (DaysFromDate2 - DaysFromDate1) + 1 : DaysFromDate2 - DaysFromDate1;
 }
 
 
@@ -95,5 +95,5 @@ int main()
     sDate Date1 = ReadFullDate();
     sDate Date2 = ReadFullDate();
     cout << "\nDifference is : " << GetDifference(Date1, Date2) << " Day(s).\n";
-    cout << "Difference (including end day) is : " << GetDifference(Date1, Date2) + 1 << " Day(s).\n";
+    cout << "Difference (including end day) is : " << GetDifference(Date1, Date2, true) << " Day(s).\n";
 }
