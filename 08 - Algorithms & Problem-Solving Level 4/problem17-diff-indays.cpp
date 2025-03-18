@@ -88,6 +88,44 @@ int GetDifference(sDate Date1, sDate Date2, bool IncludeEndDay=false)
     return (IncludeEndDay) ? (DaysFromDate2 - DaysFromDate1) + 1 : DaysFromDate2 - DaysFromDate1;
 }
 
+//Mr Abu Hadhoud solution :
+/*bool IsLastDayInMonth(sDate Date)
+{
+    return Date.Day == DaysInMonth(Date.Year, Date.Month);
+}
+bool IsLastMonthInYear(short month)
+{
+    return month == 12;
+}
+sDate IncreaseDateByOneDay(sDate& Date)
+{
+    if (IsLastDayInMonth(Date))
+    {
+        Date.Day = 1;
+        if (IsLastMonthInYear(Date.Month))
+        {
+            Date.Month = 1;
+            Date.Year++;
+        }
+        else
+            Date.Month++;
+    }
+    else
+        Date.Day++;
+    return Date;
+}
+int GetDifferenceInDays(sDate Date1, sDate Date2, bool IncludeEndDay = false)
+{
+    int Days = 0;
+    while (IsLessThan(Date1, Date2))
+    {
+        Days++;
+        Date1 = IncreaseDateByOneDay(Date1);
+    }
+    return IncludeEndDay ? ++Days : Days;
+}*/
+
+
 
 
 int main()
@@ -96,4 +134,7 @@ int main()
     sDate Date2 = ReadFullDate();
     cout << "\nDifference is : " << GetDifference(Date1, Date2) << " Day(s).\n";
     cout << "Difference (including end day) is : " << GetDifference(Date1, Date2, true) << " Day(s).\n";
+    //Mr abu hadhoud solution :
+    /*cout << "\nDifference is : " << GetDifferenceInDays(Date1, Date2) << " Day(s).\n";
+    cout << "Difference (including end day) is : " << GetDifferenceInDays(Date1, Date2, true) << " Day(s).\n";*/
 }
