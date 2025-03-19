@@ -240,7 +240,7 @@ int main()
     cout << "12 - Adding 10 decades (faster) is  : ";
     Date = IncreaseDateByXDecadesFaster(Date, 10);
     cout << Date.Day << "/" << Date.Month << "/" << Date.Year << "\n";
-    cout << "13 - Adding one century is          : ";
+    cout << "14 - Adding one century is          : ";
     Date = IncreaseDateByOneCentury(Date);
     cout << Date.Day << "/" << Date.Month << "/" << Date.Year << "\n";
     cout << "13 - Adding one mellinium is        : ";
