@@ -131,12 +131,28 @@ sDate GetTodayTime()
     return Date;
 }
 
+//Mr Abu Hadhoud Solution :
+/*sDate GetSystemDate()
+{
+    sDate Date;
+    time_t t = time(0);
+    tm* now = localtime(&t);
+    Date.Year = now->tm_year + 1900;
+    Date.Month = now->tm_mon + 1;
+    Date.Day = now->tm_mday;
+    return Date;
+}*/
 
 
 int main()
 {
+    cout << "\nPlease Enter Your Date of Birth:\n";
     sDate YourAge = ReadFullDate();
     sDate DateNow = GetTodayTime();
     cout << "\nYour Age is : " << GetDifferenceInDays(YourAge, DateNow, true) << " Day(s).\n";
+
+    //Mr Abu Hadhoud Solution :
+    /*sDate DateNow = GetSystemDate();
+    cout << "\nYour Age is : " << GetDifferenceInDays(YourAge, DateNow, true) << " Day(s).\n";*/
 }
 
