@@ -87,7 +87,7 @@ int main()
     sPeriod Period = ReadAllPeriod();
     cout << "\nEnter Date to check : ";
     sDate Date = ReadFullDate();
-    if (IsDateWithinPeriod)
+    if (IsDateWithinPeriod(Period, Date))
         cout << "\nYes, Date is within Period.\n";
     else
         cout << "\nNo, Date isn't within Period.\n";
