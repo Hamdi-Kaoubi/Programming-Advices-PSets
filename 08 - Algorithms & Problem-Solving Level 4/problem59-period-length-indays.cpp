@@ -67,14 +67,6 @@ bool IsDate1BeforeDate2(sDate Date1, sDate Date2)
 {
     return (Date1.Year < Date2.Year) ? true : ((Date1.Year == Date2.Year) ? (Date1.Month < Date2.Month ? true : (Date1.Month == Date2.Month ? Date1.Day < Date2.Day : false)) : false);
 }
-bool IsDate1EqualsDate2(sDate Date1, sDate Date2)
-{
-    return (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? Date1.Day == Date2.Day ? true : false : false) : false;
-}
-bool IsDate1AfterDate2(sDate Date1, sDate Date2)
-{
-    return !IsDate1BeforeDate2(Date1, Date2) and !IsDate1EqualsDate2(Date1, Date2);
-}
 bool IsLastDayInMonth(sDate Date)
 {
     return Date.Day == DaysInMonth(Date.Year, Date.Month);
@@ -100,56 +92,20 @@ sDate IncreaseDateByOneDay(sDate& Date)
         Date.Day++;
     return Date;
 }
-void SwapDates(sDate& Date1, sDate& Date2)
-{
-    sDate TempDate;
-    TempDate.Year = Date1.Year;
-    TempDate.Month = Date1.Month;
-    TempDate.Day = Date1.Day;
-    Date1.Year = Date2.Year;
-    Date1.Month = Date2.Month;
-    Date1.Day = Date2.Day;
-    Date2.Year = TempDate.Year;
-    Date2.Month = TempDate.Month;
-    Date2.Day = TempDate.Day;
-}
-enum enDateCompare { Before = -1, Equal = 0, After = 1 };
-enDateCompare CompareDates(sDate Date1, sDate Date2)
-{
-    if (IsDate1BeforeDate2(Date1, Date2))
-        return enDateCompare::Before;
-    if (IsDate1EqualsDate2(Date1, Date2))
-        return enDateCompare::Equal;
-    /* if (IsDate1AfterDate2(Date1,Date2))
-    return enDateCompare::After;*/
-    //this is faster
-    return enDateCompare::After;
-}
-short GetDifferenceInDays(sDate Date1, sDate Date2)
+
+short GetDifferenceInDays(sDate Date1, sDate Date2, bool IncludeEndDay = false)
 {
     short Days = 0;
-    short SawpFlagValue = 1;
-    if (CompareDates(Date1, Date2) == enDateCompare::After)
-    {
-        //Swap Dates
-        SwapDates(Date1, Date2);
-        SawpFlagValue = -1;
-    }
-    /*f (CompareDates(Date1, Date2) == enDateCompare::Equal)
-    {
-        Days = 0;
-    }*/
-    while (CompareDates(Date1, Date2) == enDateCompare::Before)
+    while (IsDate1BeforeDate2(Date1, Date2))
     {
         Days++;
         Date1 = IncreaseDateByOneDay(Date1);
     }
-    return Days * SawpFlagValue;
+    return IncludeEndDay ? ++Days : Days;
 }
 short GetDifferenceInDays(sPeriod Period, bool IncludeEndDay = false)
 {
-    short Days = GetDifferenceInDays(Period.StartDate, Period.EndDate);
-    return IncludeEndDay ? ++Days : Days;
+    return GetDifferenceInDays(Period.StartDate, Period.EndDate, IncludeEndDay);
 }
 
 
