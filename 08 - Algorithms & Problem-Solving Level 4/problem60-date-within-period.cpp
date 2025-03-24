@@ -76,8 +76,8 @@ enCompareDates CompareDates(sDate Date1, sDate Date2)
 
 bool IsDateWithinPeriod(sPeriod Period, sDate Date)
 {
-    return (CompareDates(Period.StartDate, Date) == enCompareDates::before) and
-        (CompareDates(Period.EndDate, Date) == enCompareDates::after);
+    return !(CompareDates(Date, Period.StartDate) == enCompareDates::before
+        || CompareDates(Date, Period.EndDate) == enCompareDates::after);
 }
 
 
