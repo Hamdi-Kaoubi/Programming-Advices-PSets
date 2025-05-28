@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -1391,5 +1390,3 @@ int main()
 {
     ManagePages(ClientsFileName);
 }
-
->>>>>>> 2e133ccf74d142df351db3ea7df5dbe40297869d
